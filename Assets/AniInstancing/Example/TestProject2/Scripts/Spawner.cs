@@ -24,7 +24,7 @@ public class Spawner: MonoBehaviour {
             showCount += 50;
         }
 
-        string text = AnimationInstancing.AnimationInstancingMgr.Instance.UseInstancing ? "EnableInstancing" : "DisableInstancing";
+        string text = !AnimationInstancing.AnimationInstancingMgr.Instance.UseInstancing ? "EnableInstancing" : "DisableInstancing";
         if (GUI.Button(new Rect(10, 150, 140, 40), text))
         {
             AnimationInstancing.AnimationInstancingMgr.Instance.UseInstancing = !AnimationInstancing.AnimationInstancingMgr.Instance.UseInstancing;
@@ -80,10 +80,8 @@ public class Spawner: MonoBehaviour {
                 else
                 {
                     GameObject obj = null;
-                    if (prefabA != null && !alt)
+   
                         obj = Instantiate(prefabB, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-                    if (prefabB != null && alt)
-                        obj = Instantiate(prefabA, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
                     obj.SetActive(true);
                     objList.Add(obj);
                 }
